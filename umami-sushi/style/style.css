@@ -1,0 +1,1760 @@
+/* ===========================
+   UMAMI SUSHI - STYLESHEET
+   Mobile First aanpak
+   =========================== */
+
+/* === GOOGLE FONTS === */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap");
+
+/* === CSS VARIABELEN === */
+:root {
+  --kleur-donker: #1e1b1b;
+  --kleur-nav: #2a2525;
+  --kleur-oranje: #e8622a;
+  --kleur-goud: #f0a030;
+  --kleur-licht: #f5f0e8;
+  --kleur-wit: #ffffff;
+  --kleur-grijs: #666666;
+  --kleur-border: #3a3333;
+  --kleur-knop-bg: #2e2929;
+  --kleur-knop-border: #4a4545;
+  --font-titel: "Playfair Display", serif;
+  --font-tekst: "Noto Sans JP", sans-serif;
+}
+
+/* === LICHT MODUS VARIABELEN === */
+body.licht-modus {
+  --kleur-donker: #f5f0e8;
+  --kleur-nav: #e8e0d0;
+  --kleur-oranje: #c8501f;
+  --kleur-goud: #9a6b10;
+  --kleur-licht: #2a2020;
+  --kleur-wit: #1a1010;
+  --kleur-grijs: #555555;
+  --kleur-border: #c8c0b0;
+  --kleur-knop-bg: #e0d8c8;
+  --kleur-knop-border: #b8b0a0;
+}
+
+/* === DARK/LIGHT TOGGLE KNOP === */
+.thema-toggle {
+  position: fixed;
+  bottom: 3vh;
+  right: 4vw;
+  z-index: 400;
+  background-color: var(--kleur-knop-bg);
+  border: 1px solid var(--kleur-knop-border);
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  font-size: 1.3rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.thema-toggle:hover {
+  background-color: var(--kleur-oranje);
+  border-color: var(--kleur-oranje);
+  color: #fff;
+}
+
+/* Licht modus overschrijvingen voor hardcoded kleuren */
+body.licht-modus header,
+body.licht-modus main,
+body.licht-modus .hero-home,
+body.licht-modus .hero,
+body.licht-modus .hamburger-overlay {
+  background-color: var(--kleur-donker);
+}
+
+body.licht-modus .hero,
+body.licht-modus .menu-hero,
+body.licht-modus .info-blok,
+body.licht-modus .menu-kaart,
+body.licht-modus .vacature-kaart,
+body.licht-modus .menu-noot,
+body.licht-modus .tijden-tabel,
+body.licht-modus .kaart-container,
+body.licht-modus .ot-locatie,
+body.licht-modus .ot-tijden {
+  background-color: #e8e0d0;
+}
+
+body.licht-modus .tijden-tabel th {
+  background-color: #d8d0c0;
+}
+
+body.licht-modus footer {
+  background-color: #e0d8c8;
+}
+
+body.licht-modus .menu-tabs {
+  background-color: var(--kleur-nav);
+}
+
+body.licht-modus .hamburger-backdrop.open {
+  background: rgba(0,0,0,0.35);
+}
+
+body.licht-modus .formulier-groep input,
+body.licht-modus .formulier-groep select,
+body.licht-modus .formulier-groep textarea {
+  background-color: #e8e0d0;
+  color: var(--kleur-licht);
+}
+
+body.licht-modus .formulier-groep input::placeholder,
+body.licht-modus .formulier-groep textarea::placeholder {
+  color: rgba(42,32,32,0.4);
+}
+
+body.licht-modus .gerecht {
+  border-bottom-color: rgba(180,170,160,0.6);
+}
+
+body.licht-modus .gerecht-beschrijving,
+body.licht-modus .categorie-subtitel {
+  color: rgba(42,32,32,0.55);
+}
+
+body.licht-modus .menu-noot p,
+body.licht-modus .kaart-placeholder,
+body.licht-modus .hero p,
+body.licht-modus .menu-hero p {
+  color: rgba(42,32,32,0.6);
+}
+
+body.licht-modus .info-blok p,
+body.licht-modus .vacature-kaart p,
+body.licht-modus .text-center p {
+  color: rgba(42,32,32,0.7);
+}
+
+body.licht-modus .menu-tab {
+  color: rgba(42,32,32,0.6);
+}
+
+body.licht-modus .menu-tab:hover {
+  color: var(--kleur-licht);
+}
+
+body.licht-modus .menu-tab.actief {
+  color: var(--kleur-oranje);
+}
+
+body.licht-modus .hamburger-knop span {
+  background-color: var(--kleur-licht);
+}
+
+body.licht-modus .concept-sectie {
+  background-color: var(--kleur-donker);
+}
+
+body.licht-modus .concept-tekst p {
+  color: rgba(42,32,32,0.8);
+}
+
+body.licht-modus .ot-adres a {
+  color: var(--kleur-oranje);
+}
+
+/* === RESERVERING PAGINA - LICHT MODUS === */
+
+/* Titel balk boven het formulier */
+body.licht-modus .reserveer-titel {
+  background-color: #fff8f0;
+  border-color: #d4c4b0;
+  color: #3a2a1a;
+}
+
+/* Formulier achtergrond: warm wit met zachte schaduw */
+body.licht-modus .reserveer-formulier {
+  background-color: #fff8f0;
+  border-color: #d4c4b0;
+  box-shadow: 0 4px 24px rgba(180, 140, 80, 0.08);
+}
+
+/* Labels: warme goud-bruine tint */
+body.licht-modus .reserveer-formulier label {
+  color: #7a5520;
+  font-weight: 500;
+}
+
+/* Invoervelden: witte achtergrond, subtiele rand onderaan */
+body.licht-modus .reserveer-formulier input {
+  background: transparent;
+  border-bottom-color: #c0a880;
+  color: #2a1a10;
+}
+
+body.licht-modus .reserveer-formulier input:focus {
+  border-bottom-color: var(--kleur-oranje);
+}
+
+/* Datumkiezer icoon zichtbaar in licht modus (geen invert) */
+body.licht-modus .reserveer-formulier input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: 0.6;
+}
+
+/* OT titels ook aanpassen (zelfde stijl als reserveer-titel) */
+body.licht-modus .ot-titel {
+  background-color: #fff8f0;
+  border-color: #d4c4b0;
+  color: #3a2a1a;
+}
+
+/* === RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--kleur-donker);
+  font-family: var(--font-tekst);
+  color: var(--kleur-licht);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===========================
+   MOBILE (max-width: 767px)
+   =========================== */
+
+@media (max-width: 767px) {
+  /* --- HEADER --- */
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--kleur-donker);
+    width: 100%;
+    border-bottom: 2px solid var(--kleur-oranje);
+    padding: 1.5vh 3vw;
+    gap: 3vw;
+  }
+
+  /* Logo gecentreerd in de rij */
+  header > article {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  header > article a img {
+    height: 8vh;
+    width: auto;
+  }
+
+  /* Navigatie verbergen op mobiel */
+  header > nav {
+    display: none;
+  }
+
+  /* --- HERO HOME --- */
+  /* Donkere achtergrond, logo groot gecentreerd, Menu knop */
+  .hero-home {
+    background-color: var(--kleur-donker);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 65vh;
+    padding: 5vh 5vw;
+  }
+
+  .hero-logo {
+    width: 65vw;
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 4vh;
+  }
+
+  /* Menu knop - donkere achtergrond, licht randje */
+  .knop-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--kleur-licht);
+    background-color: var(--kleur-knop-bg);
+    border: 1px solid var(--kleur-knop-border);
+    width: 40vw;
+    height: 5.5vh;
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+
+  .knop-menu:hover {
+    background-color: var(--kleur-oranje);
+    border-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+  }
+
+  /* --- ALGEMENE MAIN CONTENT --- */
+  main {
+    background-color: var(--kleur-donker);
+  }
+
+  .sectie-padding {
+    padding: 3vh 4vw;
+  }
+
+  /* Sectie titels */
+  .sectie-titel {
+    font-family: var(--font-titel);
+    font-size: 1.8rem;
+    color: var(--kleur-goud);
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+
+  .sectie-lijn {
+    width: 60px;
+    height: 2px;
+    background-color: var(--kleur-oranje);
+    margin: 0 auto 4vh auto;
+  }
+
+  /* Hero voor andere pagina's */
+  .hero {
+    background-color: #252020;
+    padding: 5vh 5vw;
+    text-align: center;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--kleur-oranje);
+  }
+
+  .hero h1 {
+    font-family: var(--font-titel);
+    font-size: 1.8rem;
+    color: var(--kleur-goud);
+    margin-bottom: 1.5vh;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    color: var(--kleur-licht);
+    line-height: 1.8;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* --- MENU GRID (1 kolom mobile) --- */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5vh;
+    margin-bottom: 3vh;
+    padding: 0 4vw;
+  }
+
+  .menu-kaart {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    padding: 2vh 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-kaart-info h3 {
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    color: var(--kleur-licht);
+    margin-bottom: 0.4vh;
+    font-weight: 500;
+  }
+
+  .menu-kaart-info p {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.6);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .menu-kaart-prijs {
+    font-family: var(--font-tekst);
+    font-size: 1.1rem;
+    color: var(--kleur-oranje);
+    font-weight: 500;
+    min-width: 55px;
+    text-align: right;
+  }
+
+  .menu-categorie-titel {
+    font-family: var(--font-titel);
+    font-size: 1.3rem;
+    color: var(--kleur-goud);
+    margin: 3vh 4vw 2vh 4vw;
+    padding-bottom: 1vh;
+    border-bottom: 1px solid var(--kleur-oranje);
+  }
+
+  /* --- INFO GRID (1 kolom mobile) --- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2vh;
+    padding: 0 4vw 3vh 4vw;
+  }
+
+  .info-blok {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    padding: 2.5vh 4vw;
+    text-align: center;
+  }
+
+  .info-blok h3 {
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    color: var(--kleur-goud);
+    margin-bottom: 1.5vh;
+    font-weight: 500;
+  }
+
+  .info-blok p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.75);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* --- OPENINGSTIJDEN TABEL --- */
+  .tijden-tabel {
+    width: calc(100% - 8vw);
+    margin: 0 4vw 3vh 4vw;
+    border-collapse: collapse;
+    background-color: #252020;
+  }
+
+  .tijden-tabel th {
+    background-color: #1a1616;
+    color: var(--kleur-goud);
+    padding: 1.5vh 3vw;
+    text-align: left;
+    font-family: var(--font-tekst);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tijden-tabel td {
+    padding: 1.5vh 3vw;
+    border-bottom: 1px solid var(--kleur-border);
+    font-size: 0.85rem;
+    color: var(--kleur-licht);
+  }
+
+  .tijden-tabel tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- FORMULIER --- */
+  .formulier-container {
+    padding: 0 4vw 3vh 4vw;
+  }
+
+  .formulier-groep {
+    margin-bottom: 2.5vh;
+  }
+
+  .formulier-groep label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--kleur-goud);
+    margin-bottom: 0.8vh;
+    font-weight: 500;
+  }
+
+  .formulier-groep input,
+  .formulier-groep select,
+  .formulier-groep textarea {
+    width: 100%;
+    padding: 1.5vh 3vw;
+    border: 1px solid var(--kleur-border);
+    background-color: #252020;
+    font-family: var(--font-tekst);
+    font-size: 0.95rem;
+    color: var(--kleur-licht);
+    appearance: none;
+  }
+
+  .formulier-groep textarea {
+    height: 15vh;
+    resize: vertical;
+  }
+
+  .formulier-groep input:focus,
+  .formulier-groep select:focus,
+  .formulier-groep textarea:focus {
+    outline: 2px solid var(--kleur-oranje);
+    border-color: var(--kleur-oranje);
+  }
+
+  .formulier-groep input::placeholder,
+  .formulier-groep textarea::placeholder {
+    color: rgba(245, 240, 232, 0.35);
+  }
+
+  /* Knoppen */
+  .knop {
+    display: inline-block;
+    background-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+    text-decoration: none;
+    padding: 1.5vh 6vw;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-tekst);
+    transition: background-color 0.3s;
+  }
+
+  .knop:hover {
+    background-color: var(--kleur-goud);
+    color: #1a1616;
+  }
+
+  .text-center {
+    text-align: center;
+    padding: 2vh 4vw 4vh 4vw;
+  }
+
+  .text-center p {
+    color: rgba(245, 240, 232, 0.65);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    margin-bottom: 2vh;
+  }
+
+  /* --- VACATURE KAARTEN --- */
+  .vacature-kaart {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    border-left: 3px solid var(--kleur-oranje);
+    padding: 2.5vh 4vw;
+    margin: 0 4vw 2vh 4vw;
+  }
+
+  .vacature-kaart h3 {
+    font-family: var(--font-tekst);
+    font-size: 1.1rem;
+    color: var(--kleur-licht);
+    margin-bottom: 1vh;
+    font-weight: 500;
+  }
+
+  .vacature-kaart .badge {
+    display: inline-block;
+    background-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+    font-size: 0.7rem;
+    padding: 0.3vh 2vw;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5vh;
+    font-weight: 500;
+  }
+
+  .vacature-kaart p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.7);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2vh;
+  }
+
+  /* Kaart container */
+  .kaart-container {
+    width: calc(100% - 8vw);
+    margin: 0 4vw 3vh 4vw;
+    height: 30vh;
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .kaart-placeholder {
+    text-align: center;
+    color: rgba(245, 240, 232, 0.5);
+    font-size: 0.85rem;
+    line-height: 2;
+  }
+
+  /* Locatie grid (1 kolom mobile) */
+  .locatie-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3vh;
+    padding: 0 4vw 3vh 4vw;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    background-color: #141111;
+    border-top: 2px solid var(--kleur-oranje);
+    text-align: center;
+    padding: 4vh 4vw;
+    margin-top: 0;
+  }
+
+  .footer-logo-img {
+    height: 8vh;
+    width: auto;
+    margin-bottom: 2vh;
+    opacity: 0.9;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 2;
+    color: rgba(245, 240, 232, 0.55);
+  }
+} /* einde mobile */
+
+/* ===========================
+   TABLET EN GROTER (min-width: 768px)
+   =========================== */
+
+@media (min-width: 768px) {
+  /* --- HEADER --- */
+  header {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--kleur-donker);
+    width: 100%;
+    border-bottom: 2px solid var(--kleur-oranje);
+  }
+
+  /* Logo bovenaan gecentreerd */
+  header > article {
+    display: flex;
+    justify-content: center;
+    padding: 2vh 0 1.5vh 0;
+  }
+
+  header > article a img {
+    height: 9vh;
+    width: auto;
+  }
+
+  /* Navigatiebalk ONDER het logo, links naast elkaar */
+  header > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--kleur-nav);
+    padding: 1.5vh 3vw;
+    gap: 1.5vw;
+    border-top: 1px solid var(--kleur-border);
+  }
+
+  header > nav > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: var(--font-tekst);
+    font-size: 0.85rem;
+    color: var(--kleur-licht);
+    background-color: var(--kleur-knop-bg);
+    border: 1px solid var(--kleur-knop-border);
+    padding: 1vh 2vw;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    white-space: nowrap;
+    min-width: 120px;
+  }
+
+  header > nav > a:hover,
+  header > nav > a.actief {
+    background-color: var(--kleur-oranje);
+    border-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+  }
+
+  /* --- HERO HOME --- */
+  .hero-home {
+    background-color: var(--kleur-donker);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 6vh 5vw;
+  }
+
+  .hero-logo {
+    width: 25vw;
+    max-width: 380px;
+    height: auto;
+    margin-bottom: 4vh;
+  }
+
+  .knop-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--kleur-licht);
+    background-color: var(--kleur-knop-bg);
+    border: 1px solid var(--kleur-knop-border);
+    width: 14vw;
+    min-width: 140px;
+    height: 5.5vh;
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+  }
+
+  .knop-menu:hover {
+    background-color: var(--kleur-oranje);
+    border-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+  }
+
+  /* --- ALGEMENE MAIN CONTENT --- */
+  main {
+    background-color: var(--kleur-donker);
+  }
+
+  .sectie-padding {
+    padding: 4vh 6vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sectie-titel {
+    font-family: var(--font-titel);
+    font-size: 2rem;
+    color: var(--kleur-goud);
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+
+  .sectie-lijn {
+    width: 60px;
+    height: 2px;
+    background-color: var(--kleur-oranje);
+    margin: 0 auto 4vh auto;
+  }
+
+  .hero {
+    background-color: #252020;
+    padding: 6vh 8vw;
+    text-align: center;
+    border-bottom: 2px solid var(--kleur-oranje);
+  }
+
+  .hero h1 {
+    font-family: var(--font-titel);
+    font-size: 2.4rem;
+    color: var(--kleur-goud);
+    margin-bottom: 1.5vh;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: var(--kleur-licht);
+    line-height: 1.8;
+    font-weight: 300;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* --- MENU GRID (2 kolommen tablet) --- */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5vh 2vw;
+    margin-bottom: 3vh;
+    padding: 0 6vw;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .menu-kaart {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    padding: 2vh 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-kaart-info h3 {
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    color: var(--kleur-licht);
+    margin-bottom: 0.4vh;
+    font-weight: 500;
+  }
+
+  .menu-kaart-info p {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.6);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .menu-kaart-prijs {
+    font-family: var(--font-tekst);
+    font-size: 1.1rem;
+    color: var(--kleur-oranje);
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .menu-categorie-titel {
+    font-family: var(--font-titel);
+    font-size: 1.5rem;
+    color: var(--kleur-goud);
+    margin: 4vh 6vw 2.5vh 6vw;
+    padding-bottom: 1vh;
+    border-bottom: 1px solid var(--kleur-oranje);
+    max-width: calc(1200px - 12vw);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- INFO GRID (3 kolommen tablet) --- */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2vw;
+    padding: 0 6vw 4vh 6vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .info-blok {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    padding: 3vh 2vw;
+    text-align: center;
+  }
+
+  .info-blok h3 {
+    font-family: var(--font-tekst);
+    font-size: 1rem;
+    color: var(--kleur-goud);
+    margin-bottom: 1.5vh;
+    font-weight: 500;
+  }
+
+  .info-blok p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.75);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* --- OPENINGSTIJDEN TABEL --- */
+  .tijden-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 3vh;
+    background-color: #252020;
+  }
+
+  .tijden-tabel th {
+    background-color: #1a1616;
+    color: var(--kleur-goud);
+    padding: 1.5vh 2vw;
+    text-align: left;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tijden-tabel td {
+    padding: 1.5vh 2vw;
+    border-bottom: 1px solid var(--kleur-border);
+    font-size: 0.9rem;
+    color: var(--kleur-licht);
+  }
+
+  .tijden-tabel tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* --- FORMULIER --- */
+  .formulier-container {
+    padding: 0 6vw 4vh 6vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .formulier-rij {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+  }
+
+  .formulier-groep {
+    margin-bottom: 2.5vh;
+  }
+
+  .formulier-groep label {
+    display: block;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--kleur-goud);
+    margin-bottom: 0.8vh;
+    font-weight: 500;
+  }
+
+  .formulier-groep input,
+  .formulier-groep select,
+  .formulier-groep textarea {
+    width: 100%;
+    padding: 1.5vh 1.5vw;
+    border: 1px solid var(--kleur-border);
+    background-color: #252020;
+    font-family: var(--font-tekst);
+    font-size: 0.95rem;
+    color: var(--kleur-licht);
+    appearance: none;
+  }
+
+  .formulier-groep textarea {
+    height: 15vh;
+    resize: vertical;
+  }
+
+  .formulier-groep input:focus,
+  .formulier-groep select:focus,
+  .formulier-groep textarea:focus {
+    outline: 2px solid var(--kleur-oranje);
+    border-color: var(--kleur-oranje);
+  }
+
+  .formulier-groep input::placeholder,
+  .formulier-groep textarea::placeholder {
+    color: rgba(245, 240, 232, 0.35);
+  }
+
+  /* Knop */
+  .knop {
+    display: inline-block;
+    background-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+    text-decoration: none;
+    padding: 1.5vh 3vw;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-tekst);
+    transition: background-color 0.3s;
+  }
+
+  .knop:hover {
+    background-color: var(--kleur-goud);
+    color: #1a1616;
+  }
+
+  .text-center {
+    text-align: center;
+    padding: 3vh 6vw 5vh 6vw;
+  }
+
+  .text-center p {
+    color: rgba(245, 240, 232, 0.65);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 2.5vh;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- VACATURE KAARTEN (2 kolommen tablet) --- */
+  .vacatures-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    padding: 0 6vw 4vh 6vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .vacature-kaart {
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    border-left: 3px solid var(--kleur-oranje);
+    padding: 2.5vh 2vw;
+  }
+
+  .vacature-kaart h3 {
+    font-family: var(--font-tekst);
+    font-size: 1.1rem;
+    color: var(--kleur-licht);
+    margin-bottom: 1vh;
+    font-weight: 500;
+  }
+
+  .vacature-kaart .badge {
+    display: inline-block;
+    background-color: var(--kleur-oranje);
+    color: var(--kleur-wit);
+    font-size: 0.7rem;
+    padding: 0.3vh 1vw;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5vh;
+    font-weight: 500;
+  }
+
+  .vacature-kaart p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.7);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2vh;
+  }
+
+  /* Kaart container */
+  .kaart-container {
+    width: 100%;
+    height: 40vh;
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4vh;
+  }
+
+  .kaart-placeholder {
+    text-align: center;
+    color: rgba(245, 240, 232, 0.5);
+    font-size: 0.9rem;
+    line-height: 2;
+  }
+
+  /* Locatie grid (2 kolommen tablet) */
+  .locatie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+    padding: 0 6vw 4vh 6vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    background-color: #141111;
+    border-top: 2px solid var(--kleur-oranje);
+    text-align: center;
+    padding: 5vh 6vw;
+  }
+
+  .footer-logo-img {
+    height: 8vh;
+    width: auto;
+    margin-bottom: 2vh;
+    opacity: 0.9;
+  }
+
+  footer p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 2;
+    color: rgba(245, 240, 232, 0.55);
+  }
+} /* einde tablet en groter */
+
+/* ===========================
+   CONCEPT SECTIE (lunch&dinner)
+   Mobile First
+   =========================== */
+
+@media (max-width: 767px) {
+  /* Concept sectie: op mobile onder elkaar gestapeld */
+  .concept-sectie {
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 4vw 2vh 4vw;
+    gap: 3vh;
+  }
+
+  /* Label "Onze concept ———" */
+  .concept-label {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.5);
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5vh;
+    font-weight: 300;
+  }
+
+  /* Grote titel */
+  .concept-tekst h1 {
+    font-family: var(--font-tekst);
+    font-size: 1.7rem;
+    color: var(--kleur-licht);
+    font-weight: 400;
+    margin-bottom: 2vh;
+    line-height: 1.3;
+  }
+
+  /* Beschrijvende tekst */
+  .concept-tekst p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.8);
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  /* Foto blok: lege ruimte, foto komt er later in */
+  .concept-foto {
+    width: 100%;
+    min-height: 30vh;
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    overflow: hidden;
+  }
+
+  .concept-foto img,
+  .concept-foto video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .menu-sectie {
+    padding-bottom: 2vh;
+  }
+} /* einde mobile concept */
+
+@media (min-width: 768px) {
+  /* Concept sectie: tekst links, foto rechts — exact zoals screenshot */
+  .concept-sectie {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4vh 2vw 4vh 2vw;
+    gap: 3vw;
+    align-items: start;
+  }
+
+  /* Label "Onze concept ———" */
+  .concept-label {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 232, 0.5);
+    letter-spacing: 0.5px;
+    margin-bottom: 2vh;
+    font-weight: 300;
+    display: block;
+  }
+
+  /* Grote titel links uitgelijnd */
+  .concept-tekst h1 {
+    font-family: var(--font-tekst);
+    font-size: 1.8rem;
+    color: var(--kleur-licht);
+    font-weight: 400;
+    margin-bottom: 2.5vh;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  /* Beschrijvende tekst links uitgelijnd, smal */
+  .concept-tekst p {
+    font-size: 0.88rem;
+    color: rgba(245, 240, 232, 0.8);
+    line-height: 1.9;
+    font-weight: 300;
+    text-align: left;
+  }
+
+  /* Foto rechterkolom: even hoog als de tekst, foto vult ruimte */
+  .concept-foto {
+    width: 100%;
+    min-height: 45vh;
+    background-color: #252020;
+    border: 1px solid var(--kleur-border);
+    overflow: hidden;
+  }
+
+  .concept-foto img,
+  .concept-foto video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .menu-sectie {
+    padding-bottom: 3vh;
+  }
+} /* einde tablet concept */
+/* ===========================
+   CONCEPT SECTIE TEKST ONLY
+   (zonder foto, volle breedte)
+   =========================== */
+
+.concept-sectie-tekst {
+  padding: 4vh 4vw 2vh 4vw;
+}
+
+.concept-sectie-tekst .concept-label {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.5);
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5vh;
+  font-weight: 300;
+  display: block;
+}
+
+.concept-sectie-tekst h1 {
+  font-family: var(--font-tekst);
+  font-size: 1.8rem;
+  color: var(--kleur-licht);
+  font-weight: 400;
+  margin-bottom: 2vh;
+  line-height: 1.35;
+}
+
+.concept-sectie-tekst p {
+  font-size: 0.88rem;
+  color: rgba(245, 240, 232, 0.8);
+  line-height: 1.9;
+  font-weight: 300;
+  max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .concept-sectie-tekst {
+    padding: 4vh 4vw 2vh 4vw;
+  }
+}
+
+/* ===========================
+   RESERVEER SECTIE
+   =========================== */
+
+.reserveer-sectie {
+  padding: 4vh 4vw;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.reserveer-titel {
+  font-family: var(--font-tekst);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--kleur-licht);
+  background-color: #2e2929;
+  border: 1px solid var(--kleur-border);
+  text-align: center;
+  padding: 2vh 4vw;
+  margin-bottom: 2vh;
+  letter-spacing: 0.5px;
+}
+
+.reserveer-formulier {
+  background-color: #252020;
+  border: 1px solid var(--kleur-border);
+  padding: 3vh 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reserveer-formulier label {
+  font-family: var(--font-tekst);
+  font-size: 0.9rem;
+  color: var(--kleur-licht);
+  font-weight: 400;
+  margin-top: 2vh;
+}
+
+.reserveer-formulier label:first-child {
+  margin-top: 0;
+}
+
+.reserveer-formulier input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--kleur-licht);
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  font-size: 0.95rem;
+  padding: 0.6vh 0;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5vh;
+}
+
+.reserveer-formulier input:focus {
+  border-bottom-color: var(--kleur-oranje);
+}
+
+.reserveer-formulier input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+}
+
+/* ===========================
+   OPENINGSTIJDEN & LOCATIE
+   =========================== */
+
+.ot-sectie {
+  padding: 4vh 4vw;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.ot-titel {
+  font-family: var(--font-tekst);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--kleur-licht);
+  background-color: #2e2929;
+  border: 1px solid var(--kleur-border);
+  text-align: center;
+  padding: 2vh 4vw;
+  margin-bottom: 2vh;
+  letter-spacing: 0.5px;
+}
+
+.ot-tijden {
+  background-color: #252020;
+  border: 1px solid var(--kleur-border);
+  padding: 3vh 4vw;
+  margin-bottom: 3vh;
+}
+
+.ot-tijden p {
+  font-family: var(--font-tekst);
+  font-size: 0.95rem;
+  color: var(--kleur-licht);
+  font-weight: 300;
+  line-height: 2;
+}
+
+.ot-locatie {
+  background-color: #252020;
+  border: 1px solid var(--kleur-border);
+  padding: 3vh 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ot-adres p {
+  font-family: var(--font-tekst);
+  font-size: 0.95rem;
+  color: var(--kleur-licht);
+  font-weight: 300;
+  line-height: 2;
+}
+
+.ot-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ot-pin svg {
+  width: 80px;
+  height: 80px;
+  color: var(--kleur-oranje);
+  fill: var(--kleur-oranje);
+}
+
+.reserveer-knop {
+  margin-top: 3vh;
+  width: 100%;
+  padding: 1.8vh 0;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+/* ===========================
+   MENU PAGINA
+   =========================== */
+
+.menu-hero {
+  background-color: #252020;
+  padding: 5vh 5vw;
+  text-align: center;
+  border-bottom: 2px solid var(--kleur-oranje);
+}
+
+.menu-hero h1 {
+  font-family: var(--font-titel);
+  font-size: 2rem;
+  color: var(--kleur-goud);
+  margin-bottom: 1vh;
+}
+
+.menu-hero p {
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.6);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.menu-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background-color: var(--kleur-nav);
+  border-bottom: 1px solid var(--kleur-border);
+  padding: 0 3vw;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.menu-tabs::-webkit-scrollbar { display: none; }
+
+.menu-tab {
+  flex-shrink: 0;
+  padding: 1.5vh 3vw;
+  font-family: var(--font-tekst);
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.6);
+  cursor: pointer;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.menu-tab:hover { color: var(--kleur-licht); }
+
+.menu-tab.actief {
+  color: var(--kleur-oranje);
+  border-bottom-color: var(--kleur-oranje);
+}
+
+.menu-body {
+  padding: 0 4vw 6vh 4vw;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu-categorie {
+  display: none;
+  padding-top: 4vh;
+}
+
+.menu-categorie.zichtbaar { display: block; }
+
+.categorie-kop {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  margin-bottom: 3vh;
+}
+
+.categorie-kop h2 {
+  font-family: var(--font-titel);
+  font-size: 1.6rem;
+  color: var(--kleur-goud);
+  white-space: nowrap;
+}
+
+.categorie-lijn {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--kleur-oranje), transparent);
+}
+
+.categorie-subtitel {
+  font-size: 0.75rem;
+  color: rgba(245, 240, 232, 0.4);
+  margin-top: -2vh;
+  margin-bottom: 2.5vh;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.gerechten-lijst {
+  display: flex;
+  flex-direction: column;
+}
+
+.gerecht {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 0;
+  border-bottom: 1px solid rgba(58, 51, 51, 0.6);
+  gap: 3vw;
+}
+
+.gerecht:last-child { border-bottom: none; }
+
+.gerecht-foto {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  background-color: #2e2929;
+  border: 1px solid var(--kleur-border);
+  overflow: hidden;
+}
+
+.gerecht-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.7;
+}
+
+.gerecht-info { flex: 1; }
+
+.gerecht-naam {
+  font-family: var(--font-tekst);
+  font-size: 0.95rem;
+  color: var(--kleur-licht);
+  font-weight: 500;
+  margin-bottom: 0.4vh;
+}
+
+.gerecht-beschrijving {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.55);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.gerecht-prijs {
+  font-family: var(--font-tekst);
+  font-size: 1rem;
+  color: var(--kleur-oranje);
+  font-weight: 500;
+  white-space: nowrap;
+  padding-top: 0.2vh;
+}
+
+.gerechten-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 4vw;
+}
+
+.gerechten-grid .gerecht {
+  border-bottom: 1px solid rgba(58, 51, 51, 0.6);
+}
+
+.menu-noot {
+  margin-top: 5vh;
+  padding: 2.5vh 4vw;
+  border: 1px solid var(--kleur-border);
+  background-color: #252020;
+  text-align: center;
+}
+
+.menu-noot p {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.5);
+  font-weight: 300;
+  line-height: 2;
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .menu-hero h1 { font-size: 2.8rem; }
+
+  .menu-tabs {
+    justify-content: center;
+    padding: 0 6vw;
+  }
+
+  .menu-tab {
+    padding: 1.8vh 2.5vw;
+    font-size: 0.85rem;
+  }
+
+  .menu-body {
+    padding: 0 6vw 8vh 6vw;
+  }
+
+  .gerechten-lijst {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 5vw;
+  }
+
+  .gerechten-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* ===========================
+   HAMBURGER MENU
+   =========================== */
+
+/* Knop linksboven in header */
+.hamburger-knop {
+  position: absolute;
+  top: 50%;
+  left: 3vw;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px;
+  z-index: 100;
+}
+
+.hamburger-knop span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--kleur-licht);
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.hamburger-knop:hover span {
+  background-color: var(--kleur-oranje);
+}
+
+/* Header relatief positioneren zodat absolute knop werkt */
+header {
+  position: relative;
+}
+
+/* Backdrop (donkere overlay achter menu) */
+.hamburger-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hamburger-backdrop.open {
+  display: block;
+  opacity: 1;
+}
+
+/* Slide-in menu panel */
+.hamburger-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75vw;
+  max-width: 280px;
+  height: 100vh;
+  background-color: var(--kleur-donker);
+  border-right: 1px solid var(--kleur-border);
+  z-index: 300;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.hamburger-overlay.open {
+  transform: translateX(0);
+}
+
+/* Nav binnenin het menu */
+.hamburger-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 2vh 5vw 4vh 5vw;
+}
+
+/* Sluit knop */
+.hamburger-sluit {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: var(--kleur-licht);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 1.5vh 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.hamburger-sluit:hover {
+  color: var(--kleur-oranje);
+}
+
+/* Logo in menu */
+.hamburger-logo {
+  width: 55%;
+  max-width: 150px;
+  height: auto;
+  margin: 2vh auto 3vh auto;
+  display: block;
+}
+
+/* Menu links */
+.hamburger-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 1.8vh 0;
+  border-bottom: 1px solid var(--kleur-border);
+  transition: color 0.2s;
+}
+
+.hamburger-link:last-child {
+  border-bottom: none;
+}
+
+.hamburger-link:hover {
+  color: var(--kleur-oranje);
+}
+
+.hamburger-link svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: var(--kleur-oranje);
+}
