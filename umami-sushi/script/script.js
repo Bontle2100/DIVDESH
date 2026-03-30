@@ -56,3 +56,82 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// --- SLIDESHOW ---
+  const slides = document.getElementsByClassName('slide');
+  const slideshowcontainer = document.getElementById('slideshow');
+
+  if (slides.length > 0 && slideshowcontainer) {
+    const num = document.getElementById('num');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    const ballscontainer = document.getElementById('ballcontainer');
+
+    let balls;
+    let inside = false;
+    let slideNum = 0;
+    let lastSlide = 0;
+    const timer = 3000;
+
+    function showHide() {
+      slides[lastSlide].style.display = 'none';
+      slides[slideNum].style.display = 'block';
+      num.innerHTML = `${slideNum + 1}/${slides.length}`;
+      balls[lastSlide].checked = false;
+      balls[slideNum].checked = true;
+    }
+
+    function slideshow() {
+      lastSlide = slideNum;
+      slideNum = (slideNum < slides.length - 1) ? slideNum + 1 : 0;
+      showHide();
+    }
+
+    function nextSlide() {
+      clearInterval(slideinter);
+      slideshow();
+      if (!inside) slideinter = setInterval(slideshow, timer);
+    }
+
+    function prevSlide() {
+      clearInterval(slideinter);
+      lastSlide = slideNum;
+      slideNum = (slideNum > 0) ? slideNum - 1 : slides.length - 1;
+      showHide();
+      if (!inside) slideinter = setInterval(slideshow, timer);
+    }
+
+    function spawnBalls() {
+      for (let i = 0; i < slides.length; i++) {
+        ballscontainer.innerHTML += `<input type="radio" class="ball" id="${i}">`;
+      }
+      balls = document.querySelectorAll('.ball');
+    }
+
+    next.addEventListener('click', nextSlide);
+    prev.addEventListener('click', prevSlide);
+
+    ballscontainer.addEventListener('click', function(event) {
+      if (event.target.classList.contains('ball')) {
+        clearInterval(slideinter);
+        lastSlide = slideNum;
+        slideNum = parseInt(event.target.id);
+        showHide();
+        if (!inside) slideinter = setInterval(slideshow, timer);
+      }
+    });
+
+    slideshowcontainer.addEventListener('mouseover', function() {
+      clearInterval(slideinter);
+      inside = true;
+    });
+
+    slideshowcontainer.addEventListener('mouseout', function() {
+      inside = false;
+      slideinter = setInterval(slideshow, timer);
+    });
+
+    spawnBalls();
+    showHide();
+    let slideinter = setInterval(slideshow, timer);
+  }

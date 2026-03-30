@@ -1758,3 +1758,99 @@ header {
   flex-shrink: 0;
   fill: var(--kleur-oranje);
 }
+
+/* ===========================
+   SLIDESHOW
+   =========================== */
+
+#slideshow {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top: 2px solid var(--kleur-oranje);
+  border-bottom: 2px solid var(--kleur-oranje);
+  background-color: #1a1616;
+  user-select: none;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (min-width: 768px) {
+  .slide {
+    height: 60vh;
+  }
+}
+
+/* Pijltjes */
+#prev,
+#next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(30, 27, 27, 0.7);
+  border: 1px solid var(--kleur-border);
+  color: var(--kleur-licht);
+  font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  z-index: 10;
+}
+
+#prev { left: 2vw; }
+#next { right: 2vw; }
+
+#prev:hover,
+#next:hover {
+  background-color: var(--kleur-oranje);
+  border-color: var(--kleur-oranje);
+}
+
+/* Teller */
+#num {
+  position: absolute;
+  top: 1.5vh;
+  right: 2vw;
+  font-family: var(--font-tekst);
+  font-size: 0.75rem;
+  color: rgba(245, 240, 232, 0.6);
+  font-weight: 300;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+/* Bolletjes */
+#ballcontainer {
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.ball {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--kleur-oranje);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ball:checked {
+  background-color: var(--kleur-oranje);
+}
