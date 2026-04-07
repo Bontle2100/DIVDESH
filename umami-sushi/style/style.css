@@ -1854,3 +1854,430 @@ header {
 .ball:checked {
   background-color: var(--kleur-oranje);
 }
+/* ===========================
+   TOEGANKELIJKHEID
+   =========================== */
+
+/* Skip link voor toetsenbordgebruikers */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--kleur-oranje);
+  color: #fff;
+  padding: 8px 16px;
+  font-family: var(--font-tekst);
+  font-size: 0.85rem;
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Floating toegankelijkheidsknop (FAB) ── */
+.toegang-fab {
+  position: fixed;
+  bottom: 3vh;
+  left: 4vw;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--kleur-nav);
+  border: 1px solid var(--kleur-border);
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  padding: 10px 16px 10px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+}
+
+.toegang-fab svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: var(--kleur-oranje);
+  transition: fill 0.25s;
+}
+
+.toegang-fab-label {
+  white-space: nowrap;
+}
+
+.toegang-fab:hover,
+.toegang-fab:focus-visible {
+  background-color: var(--kleur-oranje);
+  border-color: var(--kleur-oranje);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(232,98,42,0.4);
+  outline: none;
+}
+
+.toegang-fab:hover svg,
+.toegang-fab:focus-visible svg {
+  fill: #fff;
+}
+
+.toegang-fab.actief {
+  background-color: var(--kleur-oranje);
+  border-color: var(--kleur-oranje);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(232,98,42,0.4);
+}
+
+.toegang-fab.actief svg {
+  fill: #fff;
+}
+
+/* ── Toegankelijkheidspaneel ── */
+.toegang-paneel {
+  position: fixed;
+  bottom: calc(3vh + 56px + 12px);
+  left: 4vw;
+  z-index: 499;
+  background-color: var(--kleur-nav);
+  border: 1px solid var(--kleur-border);
+  border-radius: 12px;
+  width: min(320px, 90vw);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.toegang-paneel.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+/* Paneel header */
+.toegang-paneel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--kleur-border);
+}
+
+.toegang-paneel-header span {
+  font-family: var(--font-tekst);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--kleur-grijs);
+}
+
+.toegang-sluit {
+  background: none;
+  border: none;
+  color: var(--kleur-grijs);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.toegang-sluit:hover,
+.toegang-sluit:focus-visible {
+  color: var(--kleur-licht);
+  background-color: var(--kleur-border);
+  outline: none;
+}
+
+/* Paneel secties */
+.toegang-sectie {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--kleur-border);
+}
+
+.toegang-sectie:last-child {
+  border-bottom: none;
+}
+
+.toegang-sectie-titel {
+  font-family: var(--font-tekst);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--kleur-grijs);
+  margin-bottom: 10px;
+}
+
+/* Toggle knoppen (weergave opties) */
+.toegang-toggle-knop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: 1px solid var(--kleur-border);
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  font-size: 0.85rem;
+  padding: 9px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 7px;
+  transition: border-color 0.2s, background-color 0.2s;
+  text-align: left;
+}
+
+.toegang-toggle-knop:last-child {
+  margin-bottom: 0;
+}
+
+.toegang-toggle-knop:hover,
+.toegang-toggle-knop:focus-visible {
+  border-color: var(--kleur-oranje);
+  background-color: rgba(232,98,42,0.08);
+  outline: none;
+}
+
+.toegang-toggle-knop.actief {
+  border-color: var(--kleur-oranje);
+  background-color: rgba(232,98,42,0.12);
+}
+
+.toegang-toggle-knop.actief .toegang-toggle-pill {
+  background-color: var(--kleur-oranje);
+}
+
+.toegang-toggle-knop.actief .toegang-toggle-pill::after {
+  transform: translateX(14px);
+}
+
+.toegang-toggle-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.toegang-toggle-tekst {
+  flex: 1;
+}
+
+/* Kleine pill-schakelaar */
+.toegang-toggle-pill {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  background-color: var(--kleur-border);
+  border-radius: 50px;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.toegang-toggle-pill::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+/* Lettergrootte sectie */
+.font-rij {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px 0;
+}
+
+.toegang-font-knop {
+  background: none;
+  border: 1px solid var(--kleur-border);
+  color: var(--kleur-licht);
+  font-family: var(--font-tekst);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.toegang-font-knop:hover,
+.toegang-font-knop:focus-visible {
+  background-color: var(--kleur-oranje);
+  border-color: var(--kleur-oranje);
+  color: #fff;
+  outline: none;
+}
+
+/* A− knop */
+#fontKleiner {
+  font-size: 0.85rem;
+  padding: 6px 10px;
+}
+
+/* A+ knop */
+.toegang-font-knop--groot {
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-weight: 600;
+}
+
+/* Reset knop */
+.toegang-font-knop--reset {
+  font-size: 0.95rem;
+  padding: 5px 8px;
+  opacity: 0.65;
+  margin-left: auto;
+}
+
+.toegang-font-knop--reset:hover {
+  opacity: 1;
+}
+
+.font-schaal-indicator {
+  font-family: var(--font-tekst);
+  font-size: 0.75rem;
+  color: var(--kleur-grijs);
+  min-width: 36px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Font-meter balk */
+.font-meter {
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+  overflow: hidden;
+  background-color: var(--kleur-border);
+  appearance: none;
+}
+
+.font-meter::-webkit-meter-bar {
+  background: var(--kleur-border);
+  border: none;
+  border-radius: 2px;
+}
+
+.font-meter::-webkit-meter-optimum-value {
+  background: var(--kleur-oranje);
+  border-radius: 2px;
+}
+
+.font-meter::-moz-meter-bar {
+  background: var(--kleur-oranje);
+  border-radius: 2px;
+}
+
+/* Hoog contrast modus */
+body.hoog-contrast {
+  --kleur-donker: #000000;
+  --kleur-nav: #111111;
+  --kleur-oranje: #ff6600;
+  --kleur-goud: #ffcc00;
+  --kleur-licht: #ffffff;
+  --kleur-wit: #ffffff;
+  --kleur-grijs: #cccccc;
+  --kleur-border: #ffffff;
+  --kleur-knop-bg: #000000;
+  --kleur-knop-border: #ffffff;
+}
+
+body.hoog-contrast.licht-modus {
+  --kleur-donker: #ffffff;
+  --kleur-nav: #eeeeee;
+  --kleur-oranje: #cc3300;
+  --kleur-goud: #996600;
+  --kleur-licht: #000000;
+  --kleur-wit: #000000;
+  --kleur-grijs: #333333;
+  --kleur-border: #000000;
+  --kleur-knop-bg: #ffffff;
+  --kleur-knop-border: #000000;
+}
+
+body.hoog-contrast * {
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* Animaties uitzetten */
+body.geen-animaties *,
+body.geen-animaties *::before,
+body.geen-animaties *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* Concept sectie (lunch_dinner pagina) */
+.concept-sectie {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.concept-tekst {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6vh 8vw;
+  background-color: var(--kleur-donker);
+}
+
+.concept-label {
+  font-family: var(--font-tekst);
+  font-size: 0.8rem;
+  color: var(--kleur-oranje);
+  letter-spacing: 3px;
+  margin-bottom: 2vh;
+  font-weight: 400;
+}
+
+.concept-tekst h1 {
+  font-family: var(--font-titel);
+  font-size: 2.6rem;
+  color: var(--kleur-goud);
+  margin-bottom: 2.5vh;
+  line-height: 1.2;
+}
+
+.concept-tekst > p:not(.concept-label) {
+  font-family: var(--font-tekst);
+  font-size: 1rem;
+  color: var(--kleur-licht);
+  line-height: 1.9;
+  font-weight: 300;
+  max-width: 520px;
+  opacity: 0.85;
+}
+
+.concept-foto {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.concept-foto video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) 
