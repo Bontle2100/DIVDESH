@@ -4,7 +4,7 @@
    =========================== */
 
 /* === GOOGLE FONTS === */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Radio+Canada:wght@300;400;500&display=swap");
 
 /* === CSS VARIABELEN === */
 :root {
@@ -18,8 +18,8 @@
   --kleur-border: #3a3333;
   --kleur-knop-bg: #2e2929;
   --kleur-knop-border: #4a4545;
-  --font-titel: "Playfair Display", serif;
-  --font-tekst: "Noto Sans JP", sans-serif;
+  --font-titel: "Raleway", sans-serif;
+  --font-tekst: "Radio Canada", sans-serif;
 }
 
 /* === LICHT MODUS VARIABELEN === */
@@ -2280,4 +2280,26 @@ body.geen-animaties *::after {
   display: block;
 }
 
+<<<<<<< Updated upstream
 @media (min-width: 768px) 
+=======
+@media (min-width: 768px) {
+  .concept-sectie {
+    flex-direction: row;
+    align-items: center;
+    min-height: 80vh;
+  }
+
+  .concept-tekst {
+    flex: 1;
+    padding: 6vh 6vw;
+  }
+
+  .concept-foto {
+    width: 45%;
+    flex-shrink: 0;
+    aspect-ratio: 16/9;
+    align-self: center;
+  }
+}
+>>>>>>> Stashed changes
